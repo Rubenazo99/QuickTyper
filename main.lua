@@ -1,6 +1,3 @@
---[[
-    Your love2d game start here
-]]
 local w, h = love.graphics.getDimensions()
 
 Actor = Actor or require "src/actor"
@@ -15,16 +12,16 @@ local debug = true
 local actorList = {}
 
 function love.load()
-    local font = love.graphics.newFont("font.ttf", 35)
-    love.filesystem.load("src/RenderSprites.lua")()
-    love.filesystem.load("src/Audios.lua")()
+    local font = love.graphics.newFont("assets/fonts/courier.ttf", 35)
+    love.filesystem.load("src/scripts/RenderSprites.lua")()
+    love.filesystem.load("src/scripts/Audios.lua")()
     local typeActor = TypeActor(w/2 - 300, 200)
     table.insert(actorList, typeActor)
     
     audioLoad()
     spriteLoad()
-end
 
+end
 
 function love.update(dt)
 
