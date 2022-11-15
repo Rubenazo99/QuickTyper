@@ -1,5 +1,4 @@
 Actor = Actor or require "src/actor"
-TypeActor = TypeActor or rquire "src/scripts/TypeActor"
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -8,12 +7,11 @@ local actorList = {}
 
 function love.load()
 
-    local typeActor = TypeActor(20, 20)
+    textFileNames = love.filesystem.getDirectoryItems("TextFiles")
 
 end
 
 function love.update(dt)
-
 end
 
 function love.draw()
@@ -21,6 +19,16 @@ function love.draw()
 end
 
 function love.keypressed(key)
+    if key == 'a' then
+        for i = 1, #textFileNames do
+            print(textFileNames[i])
+        end
+       
+        for i, file in pairs(textFileNames) do
+            print(love.filesystem.read("TextFiles/"..file))
+        end
+    end
+
 
 end
 
