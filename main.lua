@@ -1,7 +1,6 @@
 Actor = Actor or require "src/actor"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
-Image = Image or require "src/scripts/Image"
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -12,11 +11,6 @@ local debug = true
 local actorList = {}
 
 function love.load()
-
-    local backgroundA = Image("src/textures/bg1.png", 1, w/2, h/2)
-    local backgroundB = Image("src/textures/bg2.png", 0.8, w/2, h/2)
-    table.insert(actorList, backgroundA)
-    table.insert(actorList, backgroundB)
 
     local typeActor = TypeActor(w/2 - 300, 200)
     table.insert(actorList, typeActor)
