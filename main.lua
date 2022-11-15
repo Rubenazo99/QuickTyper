@@ -1,6 +1,4 @@
---[[
-    Your love2d game start here
-]]
+Actor = Actor or require "src/actor"
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
