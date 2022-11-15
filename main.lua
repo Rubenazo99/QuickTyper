@@ -13,8 +13,8 @@ local actorList = {}
 
 function love.load()
 
-    love.filesystem.load("src/RenderSprites.lua")()
-    love.filesystem.load("src/Audios.lua")()
+    love.filesystem.load("src/scripts/RenderSprites.lua")()
+    love.filesystem.load("src/scripts/Audios.lua")()
     
     audioLoad()
     spriteLoad()
