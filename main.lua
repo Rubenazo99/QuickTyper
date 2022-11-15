@@ -5,7 +5,7 @@ TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
 Image = Image or require "src/scripts/Image"
 
-love.filesystem.load("src/scripts/Audios.lua")()
+--love.filesystem.load("src/scripts/Audios.lua")()
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -33,7 +33,7 @@ function love.load()
     
     -- Carga los audios
     --==================
-    audioLoad()
+    --audioLoad()
 
 end
 

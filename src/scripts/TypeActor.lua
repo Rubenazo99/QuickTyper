@@ -13,12 +13,16 @@ function TypeActor:new(x, y, scale)
     self.scale = scale or 1
     self.margin = 920
 
+    -- Este es el texto que hay que modificar para cada nuevo texto
+    self.targetText = "this is a default text"
+
 end
   
 function TypeActor:draw()
 
-    local width = self.font:getWidth(self.currentText)
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setColor(0, 0, 0, 0.1)
+    love.graphics.printf(self.targetText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.printf(self.currentText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
     love.graphics.setColor(1, 1, 1)
 
@@ -27,6 +31,7 @@ end
 function TypeActor:addKey(char)
     self.currentText = self.currentText .. char
     self.currentCharAmmount = #self.currentText
+    self:CheckCurrentText()
 end
 
 function TypeActor:removeKey()
@@ -37,6 +42,15 @@ end
 function TypeActor:resetText()
     self.currentText = ""
     self.currentCharAmmount = 0
+end
+
+function TypeActor:CheckCurrentText()
+    
+    local i = self.currentCharAmmount
+    if self.targetText:sub(i, i) ~= self.currentText:sub(i, i) then
+        self:resetText()
+    end
+
 end
 
 -- Esta función hará un sonido aleatorio cuando toque
