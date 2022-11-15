@@ -1,3 +1,4 @@
+local w, h = love.graphics.getDimensions()
 Actor = Actor or require "src/actor"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
@@ -11,6 +12,12 @@ local debug = true
 local actorList = {}
 
 function love.load()
+
+    love.filesystem.load("src/RenderSprites.lua")()
+    love.filesystem.load("src/Audios.lua")()
+    
+    audioLoad()
+    spriteLoad()
 
     local typeActor = TypeActor(w/2 - 300, 200)
     table.insert(actorList, typeActor)
@@ -27,6 +34,7 @@ end
 
 function love.draw()
 
+    spriteDraw() --Se dibuja tanto el fondo como la mesa de escribir
     for index, actor in pairs(actorList) do
         actor:draw()
     end
