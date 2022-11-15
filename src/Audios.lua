@@ -6,7 +6,7 @@ function audioLoad()
 end
 
 function audioSound()
-    if love.keyboard.isDown("a") then
-        RubenSound:play()
-    end
+    -- if love.keyboard.isDown("a") then
+    --     RubenSound:play()
+    -- end
 end

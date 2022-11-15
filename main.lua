@@ -2,34 +2,29 @@
     Your love2d game start here
 ]]
 local w, h = love.graphics.getDimensions()
+
 Actor = Actor or require "src/actor"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
-Image = Image or require "src/scripts/Image"
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
-local w, h = love.graphics.getDimensions()
 local debug = true
 
 -- La lista de actores mientras se ejecute el juego
 local actorList = {}
 
 function love.load()
+    local font = love.graphics.newFont("font.ttf", 35)
     love.filesystem.load("src/RenderSprites.lua")()
     love.filesystem.load("src/Audios.lua")()
+    local typeActor = TypeActor(w/2 - 300, 200)
+    table.insert(actorList, typeActor)
     
     audioLoad()
     spriteLoad()
 end
 
-function love.update(dt)
-    audioLoad()
-
-    local typeActor = TypeActor(w/2 - 300, 200)
-    table.insert(actorList, typeActor)
-
-end
 
 function love.update(dt)
 
