@@ -2,6 +2,7 @@ Actor = Actor or require "src/actor"
 local Timer = Actor:extend()
 
 function Timer:new(maxTime, rep, fun)
+    
     self.current = 0
     self.max = maxTime
     self.rpt = rep
@@ -23,13 +24,7 @@ function Timer:update(dt)
 
         else
 
-            for i, v in pairs(actorList) do
-                
-                if actorList[i] == self then
-                    table.remove(actorList, i)
-                end
-
-            end
+            RemoveActor(self)
 
         end
 
