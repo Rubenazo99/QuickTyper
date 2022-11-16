@@ -17,6 +17,7 @@ local debug = true
 local actorList = {}
 
 function love.load()
+    
     -- Cargo font, esta solo se usa para el texto de exit
     exitFont = love.graphics.newFont("assets/fonts/courier.ttf", 50)
     -- Carga todos los fondos predeterminados
@@ -38,8 +39,8 @@ function love.load()
     
     -- Carga los audios
     --==================
-    --audioLoad()
-
+    love.filesystem.load("src/scripts/Audios.lua")()
+    audioLoad()
 end
 
 function love.update(dt)
@@ -75,6 +76,7 @@ function love.keypressed(key, key2)
         love.event.quit()
     elseif #key == 1 then
         ReturnActor("TypeActor"):addKey(key)
+        audioSound()
     end
 
 end

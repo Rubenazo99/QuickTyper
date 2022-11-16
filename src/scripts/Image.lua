@@ -33,10 +33,6 @@ function ExitPaper(Image)
             Image.position.y = Image.position.y + 20
             
         end
-        if Image.position.y > 430 then --no hardcodear
-            Image.position.y = Image.position.y - 10
-            
-        end
         --bulRandom = false
     end
 end
@@ -46,8 +42,8 @@ function NewPaper(Image)
         bulRandom = false
     end
     if not bulRandom then
-        if Image.position.y > (430) then --no hardcodear
-            Image.position.y = Image.position.y - 10
+        if Image.position.y > (420) then --no hardcodear
+            Image.position.y = Image.position.y - 20
             
         end
     end
