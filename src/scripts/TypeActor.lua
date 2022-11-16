@@ -35,6 +35,10 @@ function TypeActor:addKey(char)
     if self:CheckTextFinished() then self:NextText() end
 end
 
+function TypeActor:addEnter()
+    self.currentText = self.currentText .. "\n"
+end
+
 function TypeActor:removeKey()
     self.currentText = string.sub(self.currentText, 1, #self.currentText - 1)
 end
