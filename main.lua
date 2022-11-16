@@ -19,7 +19,8 @@ local debug = true
 actorList = {}
 
 function love.load()
-
+    --Cargamos la font solo para el texto de exit
+    exitFont = love.graphics.newFont("assets/fonts/courier.ttf", 50)
     -- Carga todos los fondos predeterminados
     --==========================================
     local bg1 = Image("src/textures/bg1.png", w / 2, h / 2)
@@ -60,6 +61,12 @@ function love.draw()
         actor:draw()
     end
 
+    love.graphics.setFont(exitFont)
+        love.graphics.setColor(0, 0, 0, 1)
+        love.graphics.print("ESC to exit", w-950, h-95)
+        --lo dejamos como estava
+        love.graphics.setColor(255, 255, 255, 1)
+
 end
 
 function love.keypressed(key)
@@ -78,6 +85,7 @@ end
 
 function love.textinput(text)
     ReturnActor("TypeActor"):addKey(text)
+    audioSound()
 end
 
 --========================================
