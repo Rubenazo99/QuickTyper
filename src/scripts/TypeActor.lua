@@ -15,9 +15,9 @@ function TypeActor:new(x, y, scale)
 end
   
 function TypeActor:draw()
-
+    love.graphics.setColor(0,0,0)
     love.graphics.printf(self.currentText, self.font, self.position.x, self.position.y, w/2, "left", 0, self.scale, self.scale)
-
+    love.graphics.setColor(1,1,1)
 end
 
 function TypeActor:addKey(char)

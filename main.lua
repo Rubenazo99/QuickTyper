@@ -12,7 +12,7 @@ local debug = true
 local actorList = {}
 
 function love.load()
-    local font = love.graphics.newFont("assets/fonts/courier.ttf", 35)
+    local font = love.graphics.newFont("assets/fonts/courier.ttf", 15)
     love.filesystem.load("src/scripts/RenderSprites.lua")()
     love.filesystem.load("src/scripts/Audios.lua")()
     local typeActor = TypeActor(w/2 - 300, 200)
@@ -37,6 +37,7 @@ function love.draw()
     for index, actor in pairs(actorList) do
         actor:draw()
     end
+
 
 end
 
