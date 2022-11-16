@@ -1,3 +1,4 @@
+
 Actor = Actor or require "src/actor"
 local Timer = Actor:extend()
 
@@ -34,6 +35,11 @@ end
 
 function Timer:play()
     executing = true
+end
+
+function Timer:setTime()
+    text = RemoveActor("ExternalTextIntegrer")
+    self.maxTime = text.currentText.time
 end
 
 function TimePassed()
