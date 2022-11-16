@@ -58,16 +58,14 @@ function love.draw()
 
 end
 
-function love.keypressed(key)
+function love.keypressed(key, key2)
 
-    if #key == 1 then
-        ReturnActor("TypeActor"):addKey(key)
-    elseif key == "space" then
+    if key == "space" then
         ReturnActor("TypeActor"):addKey(" ")
     elseif key == "escape" then
         love.event.quit()
-    elseif key == "return" and debug == true then
-        ReturnActor("TypeActor"):resetText()
+    elseif #key == 1 then
+        ReturnActor("TypeActor"):addKey(key)
     end
 
 end

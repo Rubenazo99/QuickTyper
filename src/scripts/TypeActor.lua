@@ -14,7 +14,8 @@ function TypeActor:new(x, y, scale)
     self.margin = 920
 
     -- Este es el texto que hay que modificar para cada nuevo texto
-    self.targetText = "this is a default text"
+    -- será sobreescrito por el ExternalTextIntegrer en loading
+    self.targetText = ""
 
 end
   
