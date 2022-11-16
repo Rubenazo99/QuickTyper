@@ -64,6 +64,10 @@ function TypeActor:NextText()
     externalText:nextText()
     self.targetText = externalText.currentText.text
     self:resetText()
+
+    local bar = ReturnActor("DepletingBar")
+    bar.timer:reset()
+    bar.timer:play()
 end
 
 -- Esta función hará un sonido aleatorio cuando toque

@@ -21,6 +21,7 @@ function DepletingBar:update(dt)
     self.width = Lerp(self.originalWidth, 0, self.timer.currentTime / self.timer.maxTime)
 end
 
+
 function DepletingBar:draw()
     love.graphics.setColor(0.2,0.2,0.2)
     love.graphics.rectangle("fill", self.position.x, self.position.y, self.originalWidth, self.height)

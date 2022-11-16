@@ -16,7 +16,7 @@ local debug = true
 
 -- La lista de actores mientras se ejecute el juego
 --==================================================
- actorList = {}
+actorList = {}
 
 function love.load()
 
