@@ -60,7 +60,7 @@ function TypeActor:CheckTextFinished()
 end
 
 function TypeActor:NextText()
-
+    bulRandom = true --es un poco feo pero no puedo usar la funcion de CheckTextFinished
     local externalText = ReturnActor("ExternalTextIntegrer")
     externalText:nextText()
     self.targetText = externalText.currentText.text
