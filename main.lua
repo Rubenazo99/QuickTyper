@@ -1,4 +1,5 @@
 local w, h = love.graphics.getDimensions()
+local random
 
 Actor = Actor or require "src/actor"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
@@ -28,6 +29,7 @@ function love.update(dt)
     for index, actor in pairs(actorList) do
         actor:update(dt)
     end
+    --audioSound()
 
 end
 

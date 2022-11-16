@@ -1,3 +1,4 @@
+local w, h = love.graphics.getDimensions()
 --TablaSprites = {}
 
 function spriteLoad()
