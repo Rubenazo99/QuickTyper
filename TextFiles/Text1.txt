@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 me compre una salchipapa
 =======
 start
 >>>>>>> Stashed changes
+=======
+hello, fella typer. wellcome to quick typer. you may ask, why am I here? what am I supposed to do? well, this is a typing machine if u don’t know what to do try to… type? it usually works. it’s funny cuz, wait no, because, politely, in order to get here you typed a lot. sooo the rules of this realm are concerned i guess. 
+>>>>>>> a3098eb318bd0f09492143a47ca4ae17dd117e36
