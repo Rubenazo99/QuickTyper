@@ -7,10 +7,11 @@ Vector = Vector or require "src/Vector"
 Image = Image or require "src/scripts/Image"
 Timer = Timer or require "src/scripts/Timer"
 DepletingBar = DepletingBar or require "src/scripts/DepletingBar"
+Audio = Audio or require "src/scripts/Audios"
 --love.filesystem.load("src/scripts/Audios.lua")()
 local timer
 
-love.graphics.setDefaultFilter('nearest', 'nearest')
+love.graphics.setDefaultFilter("nearest", "nearest")
 
 local debug = true
 
@@ -21,6 +22,7 @@ actorList = {}
 function love.load()
     --Cargamos la font solo para el texto de exit
     exitFont = love.graphics.newFont("assets/fonts/courier.ttf", 50)
+    levelFont = love.graphics.newFont("assets/fonts/courier.ttf", 30)
     -- Carga todos los fondos predeterminados
     --==========================================
     local bg1 = Image("src/textures/bg1.png", w / 2, h / 2)
@@ -40,37 +42,39 @@ function love.load()
 
     -- Carga los audios
     --==================
-    --audioLoad()
-
-    local bar = DepletingBar(w/2-500,20,15, 1000)
+    local bar = DepletingBar(w / 2 - 500, 20, 15, 1000)
     table.insert(actorList, bar)
+
+    aud = Audio()
+    table.insert(actorList, aud)
 end
 
 function love.update(dt)
-
     for index, actor in pairs(actorList) do
         actor:update(dt)
     end
-
 end
 
 function love.draw()
-
     --spriteDraw() --Se dibuja tanto el fondo como la mesa de escribir
     for index, actor in pairs(actorList) do
         actor:draw()
     end
 
     love.graphics.setFont(exitFont)
-        love.graphics.setColor(0, 0, 0, 1)
-        love.graphics.print("ESC to exit", w-950, h-95)
-        --lo dejamos como estava
-        love.graphics.setColor(255, 255, 255, 1)
+    love.graphics.setColor(0, 0, 0, 1)
+    love.graphics.print("ESC to exit", w - 950, h - 95)
+    --lo dejamos como estava
+    --printar el lvl
+    love.graphics.setFont(levelFont)
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.print("lvl:"..ReturnActor("ExternalTextIntegrer").currentId, 60, 10)
 
+
+    love.graphics.setColor(255, 255, 255, 1)
 end
 
 function love.keypressed(key)
-
     if key == "escape" then
         love.event.quit()
     elseif key == "return" then
@@ -85,7 +89,7 @@ end
 
 function love.textinput(text)
     ReturnActor("TypeActor"):addKey(text)
-    
+    aud:doSound()
 end
 
 --========================================
