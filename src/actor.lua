@@ -15,7 +15,7 @@ function Actor:new(image, x, y, speed, fx, fy)
 end
 
 function Actor:update(dt)
-  self.position = self.position + self.forward * self.speed * dt
+
 end
 
 function Actor:draw()

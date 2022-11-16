@@ -1,29 +1,61 @@
 Vector = Vector or require "src/vector"
+Timer = Timer or require "src/timer"
 local TypeActor = Actor:extend()
+local w, h = love.graphics.getDimensions()
 
-function TypeActor:new(x, y)
+function TypeActor:new(x, y, scale)
 
     self.name = "TypeActor"
-    self.position = Vector.new(x, y)
+    self.position = Vector.new(x or 0, y or 0)
     self.currentText = ""
     self.currentCharAmmount = #self.currentText
-    self.font = font or love.graphics.getFont()
+    self.font = font or love.graphics.newFont("assets/fonts/courier.ttf", 35)
+    self.scale = scale or 1
+    self.margin = 920
+
+    -- Este es el texto que hay que modificar para cada nuevo texto
+    self.targetText = "this is a default text"
 
 end
   
 function TypeActor:draw()
 
-    love.graphics.printf(self.currentText, self.font, self.position.x, self.position.y, 50, "left")
+    love.graphics.setColor(0, 0, 0, 0.1)
+    love.graphics.printf(self.targetText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
+    love.graphics.setColor(0, 0, 0, 1)
+    love.graphics.printf(self.currentText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
+    love.graphics.setColor(1, 1, 1)
 
 end
 
 function TypeActor:addKey(char)
     self.currentText = self.currentText .. char
     self.currentCharAmmount = #self.currentText
+    self:CheckCurrentText()
 end
 
+function TypeActor:removeKey()
+    self.currentText = string.sub(self.currentText, 1, #self.currentText - 1)
+end
+
+-- Esta función reseteará el texto por completo
+function TypeActor:resetText()
+    self.currentText = ""
+    self.currentCharAmmount = 0
+end
+
+function TypeActor:CheckCurrentText()
+    
+    local i = self.currentCharAmmount
+    if self.targetText:sub(i, i) ~= self.currentText:sub(i, i) then
+        self:resetText()
+    end
+
+end
+
+-- Esta función hará un sonido aleatorio cuando toque
 function TypeActor:makeSound()
-    -- Aqui tienes la función en la que hará el sonido
+
 end
 
 return TypeActor
