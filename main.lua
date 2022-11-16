@@ -85,7 +85,7 @@ end
 
 function love.textinput(text)
     ReturnActor("TypeActor"):addKey(text)
-    audioSound()
+    --audioSound()
 end
 
 --========================================
