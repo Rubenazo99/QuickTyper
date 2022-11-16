@@ -75,8 +75,8 @@ function love.keypressed(key)
 
     if key == "escape" then
         love.event.quit()
-    elseif #key == 1 then
-        ReturnActor("TypeActor"):addKey(key)
+    elseif key == "return" then
+        ReturnActor("TypeActor"):addEnter()
     end
 
     if key == "p" then
