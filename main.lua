@@ -1,7 +1,7 @@
 local w, h = love.graphics.getDimensions()
 
 Actor = Actor or require "src/actor"
-ExternalTextIntegrer = ExternalTextIntegrator or require "src/scripts/ExternalTextIntegrer"
+ExternalTextIntegrer = ExternalTextIntegrer or require "src/scripts/ExternalTextIntegrer"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
 Image = Image or require "src/scripts/Image"
@@ -31,6 +31,9 @@ function love.load()
 
     local typeActor = TypeActor(w/2 - 460, 280)
     table.insert(actorList, typeActor)
+
+    local textInteger = ExternalTextIntegrer()
+    table.insert(actorList, textInteger)
     
     -- Carga los audios
     --==================

@@ -32,6 +32,7 @@ function TypeActor:addKey(char)
     self.currentText = self.currentText .. char
     self.currentCharAmmount = #self.currentText
     self:CheckCurrentText()
+    if self:CheckTextFinished() then self:NextText() end
 end
 
 function TypeActor:removeKey()
@@ -51,6 +52,18 @@ function TypeActor:CheckCurrentText()
         self:resetText()
     end
 
+end
+
+function TypeActor:CheckTextFinished()
+    return #self.currentText == #self.targetText
+end
+
+function TypeActor:NextText()
+
+    local externalText = ReturnActor("ExternalTextIntegrer")
+    externalText:nextText()
+    self.targetText = externalText.currentText.text
+    self:resetText()
 end
 
 -- Esta función hará un sonido aleatorio cuando toque
