@@ -3,6 +3,8 @@ Actor = Actor or require "src/Actor"
 bulRandom = false
 local Image = Actor:extend()
 
+--local type = ReturnActor("TypeActor")
+
 function Image:new(imagePath, x, y, scale)
     Image.super.new(self, imagePath, x, y)
 
@@ -25,9 +27,6 @@ function Image:draw()
 end
 
 function ExitPaper(Image)
-    if love.keyboard.isDown("g") then
-        bulRandom = true
-    end
     if bulRandom then
         if Image.position.y < 1100 then --no hardcodear
             Image.position.y = Image.position.y + 20
@@ -38,9 +37,6 @@ function ExitPaper(Image)
 end
 
 function NewPaper(Image)
-    if love.keyboard.isDown("h") then
-        bulRandom = false
-    end
     if not bulRandom then
         if Image.position.y > (420) then --no hardcodear
             Image.position.y = Image.position.y - 20

@@ -12,6 +12,7 @@ function TypeActor:new(x, y, scale)
     self.font = font or love.graphics.newFont("assets/fonts/courier.ttf", 35)
     self.scale = scale or 1
     self.margin = 920
+    self.visible = false
 
     -- Este es el texto que hay que modificar para cada nuevo texto
     -- será sobreescrito por el ExternalTextIntegrer en loading
