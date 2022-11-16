@@ -12,22 +12,22 @@ function DepletingBar:new(x, y, height, width)
 
     self.timer =  Timer()    
     table.insert(actorList, self.timer)
-    self.color = {0,1}
+    self.color = {1,1,1}
     self.initialColor = self.color
 
 end
 
 function DepletingBar:update(dt)
-
     self.width = Lerp(self.originalWidth, 0, self.timer.currentTime / self.timer.maxTime)
-    self.color[1] = Lerp(self.color[1],1,self.timer.currentTime / self.timer.maxTime)
-    self.color[2] = Lerp(self.color[2],0,self.timer.currentTime / self.timer.maxTime)
 end
 
 function DepletingBar:draw()
-    love.graphics.setColor(self.color[1],self.color[2],0)
+    love.graphics.setColor(0.2,0.2,0.2)
+    love.graphics.rectangle("fill", self.position.x, self.position.y, self.originalWidth, self.height)
+    love.graphics.setColor(self.color[1],self.color[2],self.color[3])
     love.graphics.rectangle("fill", self.position.x, self.position.y, self.width, self.height)
     love.graphics.setColor(1,1,1)
+
 end
 
 function Lerp(v0, v1, t)

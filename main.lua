@@ -41,13 +41,8 @@ function love.load()
     --==================
     --audioLoad()
 
-<<<<<<< Updated upstream
-
-
-=======
     local bar = DepletingBar(w/2-500,20,15, 1000)
     table.insert(actorList, bar)
->>>>>>> Stashed changes
 end
 
 function love.update(dt)

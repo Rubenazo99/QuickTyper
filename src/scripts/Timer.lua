@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-local Timer = Object:extend()
-=======
 Actor = Actor or require "src/actor"
 local Timer = Actor:extend()
 
@@ -43,4 +40,3 @@ function TimePassed()
 end
 
 return Timer
->>>>>>> Stashed changes
