@@ -1,5 +1,4 @@
 Vector = Vector or require "src/vector"
-Timer = Timer or require "src/timer"
 local TypeActor = Actor:extend()
 local w, h = love.graphics.getDimensions()
 
@@ -22,7 +21,7 @@ end
   
 function TypeActor:draw()
 
-    love.graphics.setColor(0, 0, 0, 0.1)
+    love.graphics.setColor(0, 0, 0, 0.3)
     love.graphics.printf(self.targetText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.printf(self.currentText, self.font, self.position.x, self.position.y, self.margin, "left", 0, self.scale, self.scale)
@@ -66,6 +65,10 @@ function TypeActor:NextText()
     externalText:nextText()
     self.targetText = externalText.currentText.text
     self:resetText()
+
+    local bar = ReturnActor("DepletingBar")
+    bar.timer:reset()
+    bar.timer:play()
 end
 
 -- Esta función hará un sonido aleatorio cuando toque
