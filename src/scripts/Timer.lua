@@ -1,0 +1,1 @@
+local Timer = Object:extend()
