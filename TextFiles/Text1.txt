@@ -1,1 +1,5 @@
+<<<<<<< Updated upstream
 me compre una salchipapa
+=======
+start
+>>>>>>> Stashed changes

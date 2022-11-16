@@ -23,6 +23,9 @@ function ExternalTextIntegrer:new()
     end
     
     self.currentText = self.textList[self.currentId]
+
+    local typeActor, index = ReturnActor("TypeActor")
+    typeActor.targetText = self.currentText.text
 end
 
 function ExternalTextIntegrer:update(dt) end -- Esta funcion solo existe para que no se rompa el texto
@@ -61,7 +64,6 @@ end
 --     end
 
 -- end
-
 return ExternalTextIntegrer
 
 
