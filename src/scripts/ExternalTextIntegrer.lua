@@ -18,14 +18,13 @@ function ExternalTextIntegrer:new()
     for i, file in pairs(textFileNames) do
         local text = (love.filesystem.read("TextFiles/" .. file))
         local stringArr = {}
-        for w in string.gmatch(textFileNames[i], "%s") do
+        for w in string.gmatch(textFileNames[i], '([^_]+)') do
             table.insert(stringArr,w)
         end
-        local levelTime = stringArr[2]
-
-        print(levelTime)
-
-        local entity = TextEntity(text, nil, i, levelTime)
+        
+        local time = tonumber(stringArr[2])
+        local entity = TextEntity(text, nil, i, nil,time)
+        print(entity.time)
         table.insert(self.textList, entity)
     end
 
@@ -48,7 +47,7 @@ function ExternalTextIntegrer:nextText()
 end
 
 function ExternalTextIntegrer:previousText()
-    if self.textList[self.currentId - 1] ~= nil then
+    if self.textList[self.currentId - 1] then
         self.currentId = self.currentId - 1
         self.currentText = self.textList[self.currentId]
     end

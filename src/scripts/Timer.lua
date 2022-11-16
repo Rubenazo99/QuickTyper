@@ -8,7 +8,6 @@ function Timer:new(maxTime)
     self.name = "Timer"
     self.currentTime = 0
     self.maxTime = maxTime or 20
-
 end
 
 function Timer:update(dt)
@@ -17,6 +16,8 @@ function Timer:update(dt)
         if self.currentTime > self.maxTime then
             TimePassed()
             self.currentTime = 0
+
+            type = ReturnActor("TypeActor"):prevText()
         end
     end
 end
@@ -38,7 +39,7 @@ function Timer:play()
 end
 
 function Timer:setTime()
-    text = RemoveActor("ExternalTextIntegrer")
+    local text = ReturnActor("ExternalTextIntegrer")
     self.maxTime = text.currentText.time
 end
 

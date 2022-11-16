@@ -71,6 +71,18 @@ function TypeActor:NextText()
     bar.timer:setTime()
 end
 
+function TypeActor:prevText()
+    local externalText = ReturnActor("ExternalTextIntegrer")
+    externalText:previousText()
+    self.targetText = externalText.currentText.text
+    self:resetText()
+
+    local bar = ReturnActor("DepletingBar")
+    bar.timer:reset()
+    bar.timer:play()
+    bar.timer:setTime()
+end
+
 -- Esta función hará un sonido aleatorio cuando toque
 function TypeActor:makeSound()
 
