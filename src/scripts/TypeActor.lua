@@ -1,5 +1,4 @@
 Vector = Vector or require "src/vector"
-Timer = Timer or require "src/timer"
 local TypeActor = Actor:extend()
 local w, h = love.graphics.getDimensions()
 

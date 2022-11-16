@@ -5,8 +5,10 @@ ExternalTextIntegrer = ExternalTextIntegrer or require "src/scripts/ExternalText
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
 Image = Image or require "src/scripts/Image"
-
+Timer = Timer or require "src/scripts/Timer"
+DepletingBar = DepletingBar or require "src/scripts/DepletingBar"
 --love.filesystem.load("src/scripts/Audios.lua")()
+local timer
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -14,7 +16,7 @@ local debug = true
 
 -- La lista de actores mientras se ejecute el juego
 --==================================================
-local actorList = {}
+ actorList = {}
 
 function love.load()
 
@@ -29,18 +31,23 @@ function love.load()
     local bg3 = Image("src/textures/bg2.png", w / 2, h / 2)
     table.insert(actorList, bg3)
 
-    local typeActor = TypeActor(w/2 - 460, 280)
+    local typeActor = TypeActor(w / 2 - 460, 280)
     table.insert(actorList, typeActor)
 
     local textInteger = ExternalTextIntegrer()
     table.insert(actorList, textInteger)
-    
+
     -- Carga los audios
     --==================
     --audioLoad()
 
+<<<<<<< Updated upstream
 
 
+=======
+    local bar = DepletingBar(w/2-500,20,15, 1000)
+    table.insert(actorList, bar)
+>>>>>>> Stashed changes
 end
 
 function love.update(dt)
@@ -70,6 +77,10 @@ function love.keypressed(key, key2)
         ReturnActor("TypeActor"):addKey(key)
     end
 
+    if key == "p" then
+        print("key pressed")
+        ReturnActor("DepletingBar").timer:play()
+    end
 end
 
 --========================================
