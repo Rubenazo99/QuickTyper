@@ -17,13 +17,14 @@ local debug = true
 local actorList = {}
 
 function love.load()
-
+    -- Cargo font, esta solo se usa para el texto de exit
+    exitFont = love.graphics.newFont("assets/fonts/courier.ttf", 50)
     -- Carga todos los fondos predeterminados
     --==========================================
     local bg1 = Image("src/textures/bg1.png", w / 2, h / 2)
     table.insert(actorList, bg1)
 
-    local bg2 = Image("src/textures/bg3.png", w / 2, h / 2)
+    bg2 = Image("src/textures/bg3.png", w / 2, h / 2) --no se com deixarho mes net aici que la faig global
     table.insert(actorList, bg2)
 
     local bg3 = Image("src/textures/bg2.png", w / 2, h / 2)
@@ -46,6 +47,8 @@ function love.update(dt)
     for index, actor in pairs(actorList) do
         actor:update(dt)
     end
+    ExitPaper(bg2)
+    NewPaper(bg2)
 
 end
 
@@ -55,6 +58,12 @@ function love.draw()
     for index, actor in pairs(actorList) do
         actor:draw()
     end
+    --Seteamos font y color para el texto de esc para salir
+    love.graphics.setFont(exitFont)
+    love.graphics.setColor(0, 0, 0, 1)
+    love.graphics.print("ESC to exit", w-950, h-95)
+    --lo dejamos como estava
+    love.graphics.setColor(255, 255, 255, 1)
 
 end
 

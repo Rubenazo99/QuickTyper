@@ -15,7 +15,7 @@ function Actor:new(image, x, y, speed, fx, fy)
 end
 
 function Actor:update(dt)
-
+  
 end
 
 function Actor:draw()
