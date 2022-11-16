@@ -2,14 +2,19 @@ local w, h = love.graphics.getDimensions()
 local random
 
 Actor = Actor or require "src/actor"
+ExternalTextIntegrer = ExternalTextIntegrer or require "src/scripts/ExternalTextIntegrer"
 TypeActor = TypeActor or require "src/scripts/TypeActor"
 Vector = Vector or require "src/Vector"
+Image = Image or require "src/scripts/Image"
+
+--love.filesystem.load("src/scripts/Audios.lua")()
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
 local debug = true
 
 -- La lista de actores mientras se ejecute el juego
+--==================================================
 local actorList = {}
 
 function love.load()
@@ -18,9 +23,13 @@ function love.load()
     love.filesystem.load("src/scripts/Audios.lua")()
     local typeActor = TypeActor(w/2 - 300, 200)
     table.insert(actorList, typeActor)
+
+    local textInteger = ExternalTextIntegrer()
+    table.insert(actorList, textInteger)
     
-    audioLoad()
-    spriteLoad()
+    -- Carga los audios
+    --==================
+    --audioLoad()
 
 end
 
@@ -35,7 +44,7 @@ end
 
 function love.draw()
 
-    spriteDraw() --Se dibuja tanto el fondo como la mesa de escribir
+    --spriteDraw() --Se dibuja tanto el fondo como la mesa de escribir
     for index, actor in pairs(actorList) do
         actor:draw()
     end
@@ -43,16 +52,14 @@ function love.draw()
 
 end
 
-function love.keypressed(key)
+function love.keypressed(key, key2)
 
-    if #key == 1 then
-        ReturnActor("TypeActor"):addKey(key)
-    elseif key == "space" then
+    if key == "space" then
         ReturnActor("TypeActor"):addKey(" ")
     elseif key == "escape" then
         love.event.quit()
-    elseif key == "return" and debug == true then
-        ReturnActor("TypeActor"):resetText()
+    elseif #key == 1 then
+        ReturnActor("TypeActor"):addKey(key)
     end
 
 end
