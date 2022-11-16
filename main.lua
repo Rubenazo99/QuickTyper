@@ -1,4 +1,5 @@
 Actor = Actor or require "src/actor"
+ExternalTextIntegrer = ExternalTextIntegrator or require "src/scripts/ExternalTextIntegrer"
 
 love.graphics.setDefaultFilter('nearest', 'nearest')
 
@@ -6,9 +7,7 @@ love.graphics.setDefaultFilter('nearest', 'nearest')
 local actorList = {}
 
 function love.load()
-
-    textFileNames = love.filesystem.getDirectoryItems("TextFiles")
-
+    textInter = ExternalTextIntegrer()
 end
 
 function love.update(dt)
@@ -19,17 +18,7 @@ function love.draw()
 end
 
 function love.keypressed(key)
-    if key == 'a' then
-        for i = 1, #textFileNames do
-            print(textFileNames[i])
-        end
-       
-        for i, file in pairs(textFileNames) do
-            print(love.filesystem.read("TextFiles/"..file))
-        end
-    end
-
-
+   
 end
 
 --========================================
