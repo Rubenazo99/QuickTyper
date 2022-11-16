@@ -28,7 +28,7 @@ end
 
 function ExitPaper(Image)
     if bulRandom then
-        if Image.position.y < 1100 then --no hardcodear
+        if Image.position.y < position.y then --no hardcodear
             Image.position.y = Image.position.y + 20
             
         end

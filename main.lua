@@ -41,7 +41,8 @@ function love.load()
 
     -- Carga los audios
     --==================
-    --audioLoad()
+    love.filesystem.load("src/scripts/Audios.lua")()
+    audioLoad()
 
 end
 
