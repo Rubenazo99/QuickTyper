@@ -1,6 +1,6 @@
 # QuickTyper
  
-GameJam made in 4 hours 
+GameJam made in 4 hours, mixing a typing game and a rage game.
 
 # How to install
 
